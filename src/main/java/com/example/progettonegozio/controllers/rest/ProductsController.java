@@ -39,7 +39,6 @@ public class ProductsController {
     private MessageService messageService;
 
 
-    //@PreAuthorize("hasAuthority('app-admin')")
     @PostMapping("crea_product")
     public ResponseEntity createProduct(@RequestBody @Valid Product product){
 
