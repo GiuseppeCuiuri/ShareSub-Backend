@@ -40,8 +40,7 @@ Successful responses are wrapped in a small `ResponseMessage` object (`message` 
 
 ### Requirements
 
-- JDK 17 and Maven 3.9, the versions the build was verified with. `pom.xml` targets Java 14, and the Lombok version managed by Spring Boot 2.2 fails to compile on JDK 17, so the commands below pass `-Dlombok.version=1.18.30`.
-- The `mvnw` scripts do not work: the `.mvn/wrapper` folder is not in the repository.
+- JDK 17: `pom.xml` declares `java.version` 14, and the build has been verified with JDK 17.
 - PostgreSQL, with an empty database named `ShareSub` on `localhost:5432`
 - A Keycloak server on `localhost:8080` with the realm `ProgettoNegozioScarpe`
 
@@ -63,7 +62,7 @@ export SPRING_JPA_HIBERNATE_DDL_AUTO=update
 ### Run
 
 ```bash
-mvn -Dlombok.version=1.18.30 spring-boot:run
+./mvnw spring-boot:run        # Windows: mvnw.cmd spring-boot:run
 ```
 
 Check that it is up: `curl http://localhost:8181/check/status`
