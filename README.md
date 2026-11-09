@@ -53,7 +53,13 @@ export SPRING_DATASOURCE_USERNAME=<your user>
 export SPRING_DATASOURCE_PASSWORD=<your password>
 ```
 
-The project sets `spring.jpa.hibernate.ddl-auto=none` and does not ship a schema script. To create the tables from the entities on a fresh database, run the first time with:
+The project sets `spring.jpa.hibernate.ddl-auto=none` and does not ship a schema script. All entities live in the PostgreSQL schema `orders`, which Hibernate does not create, so on a fresh database create it once:
+
+```bash
+psql -U <your user> -d ShareSub -c "CREATE SCHEMA orders;"
+```
+
+Then, to create the tables from the entities, run the first time with:
 
 ```bash
 export SPRING_JPA_HIBERNATE_DDL_AUTO=update
